@@ -35,7 +35,7 @@ public class OrganizationServiceImpl implements OrganizationService {
     @Override
     @Transactional
     public void saveOrganization(OrganizationView view)  {
-        Organization organization = new Organization(view.id,view.name, view.fullName, view.address,view.phone,view.inn,view.kpp,view.isActive);
+        Organization organization = new Organization(view.id,view.name, view.full_name, view.address,view.phone,view.inn,view.kpp,view.is_active);
         organizationDao.save(organization);
     }
     @Override
@@ -46,7 +46,7 @@ public class OrganizationServiceImpl implements OrganizationService {
 
    @Override
     public void updateOrganization(OrganizationView view){
-       Organization organization = new Organization(view.id,view.name, view.fullName, view.address,view.phone,view.inn,view.kpp,view.isActive);
+       Organization organization = new Organization(view.id,view.name, view.full_name, view.address,view.phone,view.inn,view.kpp,view.is_active);
         organizationDao.update(organization);
     }
 /*

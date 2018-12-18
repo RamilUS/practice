@@ -4,12 +4,12 @@ CREATE TABLE IF NOT EXISTS Organization( -- таблица организаци
     id         INTEGER  PRIMARY KEY AUTO_INCREMENT, -- id организации.
     version    INTEGER NOT NULL,
     name       VARCHAR(50) NOT NULL, -- название организации.
-    fullName   VARCHAR(50) UNIQUE NOT NULL, -- Полное название организации.
+    full_name   VARCHAR(50) UNIQUE NOT NULL, -- Полное название организации.
     address    VARCHAR(50) NOT NULL, -- Юридический адрес организации
      phone     VARCHAR(50) UNIQUE NOT NULL, -- телефон организации
      inn       VARCHAR(50) UNIQUE NOT NULL, -- инн организации
      kpp       VARCHAR(50) UNIQUE NOT NULL, -- кпп организации
-     isActive  BOOLEAN -- активна ли организация.
+     is_active  BOOLEAN -- активна ли организация.
     );
 
 CREATE TABLE IF NOT EXISTS Office( --офис организации
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS Office( --офис организации
     name       VARCHAR(50) UNIQUE NOT NULL, --название офиса
     address    VARCHAR(50) NOT NULL,--адрес офиса
     phone      VARCHAR(50) UNIQUE NOT NULL, --телефоный номер офиса
-    isActive   BOOLEAN --активный ли офис
+    is_active   BOOLEAN --активный ли офис
     );
 
 CREATE TABLE IF NOT EXISTS User ( -- таблица работник
@@ -49,14 +49,14 @@ CREATE TABLE IF NOT EXISTS Citizenship( -- таблица "Страна"
     code       INTEGER NOT NULL, -- Код страны
     );
 
-CREATE INDEX IX_Organization_fullName ON Organization (fullName);
+CREATE INDEX IX_Organization_full_name ON Organization (full_name);
 CREATE INDEX IX_Organization_inn ON Organization (inn);
 CREATE INDEX IX_Organization_kpp ON Organization (kpp);
-CREATE INDEX IX_Organization_isActive ON Organization (isActive);
+CREATE INDEX IX_Organization_is_active ON Organization (is_active);
 
 CREATE INDEX IX_Office_name ON Office (name);
 CREATE INDEX IX_Office_phone ON Office (phone);
-CREATE INDEX IX_Office_isActive ON Office (isActive);
+CREATE INDEX IX_Office_is_active ON Office (is_active);
 
 CREATE INDEX IX_User_firstName ON User (firstName);
 CREATE INDEX IX_User_secondName ON User  (secondName);
@@ -83,19 +83,19 @@ ALTER TABLE User ADD FOREIGN KEY (citizenshipId) REFERENCES Citizenship(id);
 COMMENT ON TABLE Organization IS 'таблица организаци';
 COMMENT ON COLUMN Organization.id IS 'id организации';
 COMMENT ON COLUMN Organization.name IS 'название организации';
-COMMENT ON COLUMN Organization.fullName IS 'Полное название организации';
+COMMENT ON COLUMN Organization.full_name IS 'Полное название организации';
 COMMENT ON COLUMN Organization.address  IS 'Юридический адрес организации';
 COMMENT ON COLUMN Organization.phone IS 'телефон организации';
 COMMENT ON COLUMN Organization.inn IS 'инн организации';
 COMMENT ON COLUMN Organization.kpp  IS 'кпп организации';
-COMMENT ON COLUMN Organization.isActive IS 'активна ли организация';
+COMMENT ON COLUMN Organization.is_active IS 'активна ли организация';
 
 COMMENT ON TABLE Office IS 'офис организации';
 COMMENT ON COLUMN Office.orgId IS 'id организации';
 COMMENT ON COLUMN Office.name IS 'название офиса';
 COMMENT ON COLUMN Office.address IS 'адрес офиса';
 COMMENT ON COLUMN Office.phone  IS 'телефоный номер офиса';
-COMMENT ON COLUMN Office.isActive IS 'активный ли офис';
+COMMENT ON COLUMN Office.is_active IS 'активный ли офис';
 
 COMMENT ON TABLE User IS 'таблица работник';
 COMMENT ON COLUMN User.id IS 'id работника';

@@ -1,12 +1,12 @@
-INSERT INTO Organization (id, version, name, fullName, address, phone, inn, kpp, isActive) VALUES (1,1,'Biline', 'BEELINE LTD', 'ул.Цюрупы, 16', '8(499)123-45-67','beeline-inn', 'beeline-kpp',true);
+INSERT INTO Organization (id, version, name, full_name, address, phone, inn, kpp, is_active) VALUES (1,1,'Biline', 'BEELINE LTD', 'ул.Цюрупы, 16', '8(499)123-45-67','beeline-inn', 'beeline-kpp',true);
 
-INSERT INTO Organization (id, version, name,  fullName, address, phone, inn, kpp, isActive) VALUES (2,1,'Megafon', 'MEGAFON LTD', 'ул.Холмогоры, 16', '8(499)123-99-99','megafon-inn', 'megafon-kpp', true);
+INSERT INTO Organization (id, version, name,  full_name, address, phone, inn, kpp, is_active) VALUES (2,1,'Megafon', 'MEGAFON LTD', 'ул.Холмогоры, 16', '8(499)123-99-99','megafon-inn', 'megafon-kpp', true);
 
-INSERT INTO Office (id, version,orgId, name, address, phone, isActive) VALUES (1,1, 1,'Билайн-отрадное' ,'ул.отрадная, 7','8(499)123-45-01', true);
-INSERT INTO Office (id, version,orgId, name, address, phone, isActive) VALUES (2,1, 1,'Билайн-вднх' ,'ул.вднх, 7','8(499)123-45-02', true);
+INSERT INTO Office (id, version,orgId, name, address, phone, is_active) VALUES (1,1, 1,'Билайн-отрадное' ,'ул.отрадная, 7','8(499)123-45-01', true);
+INSERT INTO Office (id, version,orgId, name, address, phone, is_active) VALUES (2,1, 1,'Билайн-вднх' ,'ул.вднх, 7','8(499)123-45-02', true);
 
-INSERT INTO Office (id, version,orgId, name, address, phone, isActive) VALUES (3,1, 2,'Мегафон-измайлово' ,'ул.измайлово, 7','8(499)123-99-01', true);
-INSERT INTO Office (id, version,orgId, name, address, phone, isActive) VALUES (4,1, 2,'Мегафон-марьино' ,'ул.марьино, 7','8(499)123-99-02', true);
+INSERT INTO Office (id, version,orgId, name, address, phone, is_active) VALUES (3,1, 2,'Мегафон-измайлово' ,'ул.измайлово, 7','8(499)123-99-01', true);
+INSERT INTO Office (id, version,orgId, name, address, phone, is_active) VALUES (4,1, 2,'Мегафон-марьино' ,'ул.марьино, 7','8(499)123-99-02', true);
 
 
 

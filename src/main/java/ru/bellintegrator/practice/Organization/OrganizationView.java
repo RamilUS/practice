@@ -20,7 +20,7 @@ public class OrganizationView {
     @Size(max = 50)
     @NotEmpty(message = "full name cannot be null")
     @ApiModelProperty(value = "Полное название организации", example = "OOO Рога и копыта")
-    public String fullName;
+    public String full_name;
 
     @NotNull(message = "address cannot be null")
     @Min(18)
@@ -42,10 +42,10 @@ public class OrganizationView {
 
     @NotEmpty
     @ApiModelProperty(value = "Уникальный идентификатор", hidden = true, example = "1")
-    public Boolean isActive;
+    public Boolean is_active;
 
     @Override
     public String toString() {
-        return "{id:" + id + ";name:" + name+ ";fullName:" + fullName + ";address:" + address + ";phone:" + phone +  "}";
+        return "{id:" + id + ";name:" + name+ ";full_name:" + full_name + ";address:" + address + ";phone:" + phone +  "}";
     }
 }

@@ -54,11 +54,11 @@ public class OrganizationDaoImpl implements OrganizationDao {
         CriteriaUpdate<Organization> cUpdate = builder.createCriteriaUpdate(Organization.class);
         Root organizations = cUpdate.from(Organization.class);
         cUpdate.where(builder.equal(organizations.get("id"),organization.getId()));
-        cUpdate.set("isactive",organization.getIsactive());
+        cUpdate.set("is_active",organization.getIsactive());
         cUpdate.set("phone",organization.getPhone());
         cUpdate.set("address",organization.getAddress());
         cUpdate.set("name",organization.getName());
-        cUpdate.set("fullname",organization.getFullname());
+        cUpdate.set("full_name",organization.getFullname());
         cUpdate.set("inn",organization.getInn());
         cUpdate.set("kpp",organization.getKpp());
 

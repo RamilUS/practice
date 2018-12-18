@@ -17,24 +17,24 @@ Organization {
 
     }
 
-    public Organization(String Name, String fullName ,  String address , String phone , String inn, String kpp, Boolean isActive) {
+    public Organization(String Name, String full_name,  String address , String phone , String inn, String kpp, Boolean is_active) {
         this.name = Name;
-        this.fullName = fullName;
+        this.full_name = full_name;
         this.inn = inn;
         this.kpp = kpp;
         this.address = address;
         this.phone = phone;
-        this.isActive = isActive;
+        this.is_active = is_active;
     }
-    public Organization(Integer id, String Name, String fullName ,  String address , String phone , String inn, String kpp, Boolean isActive) {
+    public Organization(Integer id, String Name, String full_name ,  String address , String phone , String inn, String kpp, Boolean is_active) {
         this.id = id;
         this.name = Name;
-        this.fullName = fullName;
+        this.full_name = full_name;
         this.inn = inn;
         this.kpp = kpp;
         this.address = address;
         this.phone = phone;
-        this.isActive = isActive;
+        this.is_active = is_active;
     }
 
     @Id
@@ -48,8 +48,8 @@ Organization {
     @Column (name = "name", nullable = false)
     private String name;
 
-    @Column(name = "fullName", length = 50, nullable = false)
-    private String fullName;
+    @Column(name = "full_name", length = 50, nullable = false)
+    private String full_name;
 
     @Column (name = "address", nullable = false)
     private String address;
@@ -63,8 +63,8 @@ Organization {
     @Column (name = "kpp", nullable = false)
     private String kpp;
 
-    @Column (name="isActive")
-    private Boolean isActive;
+    @Column (name="is_active")
+    private Boolean is_active;
 
     @OneToMany (mappedBy = "organization")
     public Set<Office> office;
@@ -87,11 +87,11 @@ Organization {
     }
 
     public String getFullname() {
-        return fullName;
+        return full_name;
     }
 
     public void setFullname(String fullName) {
-        this.fullName = fullName;
+        this.full_name = full_name;
     }
 
     public void setId(Integer id) {
@@ -127,11 +127,11 @@ Organization {
     }
 
     public Boolean getIsactive() {
-        return isActive;
+        return is_active;
     }
 
-    public void setIsactive(Boolean isActive) {
-        this.isActive = isActive;
+    public void setIsactive(Boolean is_active) {
+        this.is_active = is_active;
     }
 
     public Set<Office> getOffices() {
