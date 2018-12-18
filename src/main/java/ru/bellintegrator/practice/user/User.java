@@ -18,42 +18,42 @@ public class User {
     private Long id;
     @Version
     private Integer Version;
-    @Column(name = "officeId")
-    private Long officeId;
-    @Column (name = "firstName", length = 50,nullable = false)
-    private String firstName;
-    @Column (name = "secondName", length = 50,nullable = false)
-    private String secondName;
-    @Column (name = "middleName", length = 50,nullable = false)
-    private String middleName;
+    @Column(name = "office_id")
+    private Long office_id;
+    @Column (name = "first_name", length = 50,nullable = false)
+    private String first_name;
+    @Column (name = "second_name", length = 50,nullable = false)
+    private String second_name;
+    @Column (name = "middle_name", length = 50,nullable = false)
+    private String middle_name;
     @Column (name = "position", length = 30,nullable = false)
     private String position;
     @Column (name = "phone", length = 15,nullable = false)
     private String phone;
-    @Column(name = "docCode" , nullable = false)
-    private Integer docCode;
-    @Column (name = "docName", length = 50,nullable = false)
-    private String docName;
-    @Column (name = "docNumber", length = 15,nullable = false)
-    private String docNumber;
-    @Column(name = "docNate" , nullable = false)
+    @Column(name = "doc_code" , nullable = false)
+    private Integer doc_code;
+    @Column (name = "doc_name", length = 50,nullable = false)
+    private String doc_name;
+    @Column (name = "doc_number", length = 15,nullable = false)
+    private String doc_number;
+    @Column(name = "doc_date" , nullable = false)
     @Temporal(TemporalType.DATE)
-    private Date docDate;
-    @Column (name = "citizenshipCode", length = 10,nullable = false)
-    private String citizenshipCode;
-    @Column(name = "isIdentified" , nullable = false)
-    private Boolean isIdentified;
+    private Date doc_date;
+    @Column (name = "citizenship_code", length = 10,nullable = false)
+    private String citizenship_code;
+    @Column(name = "is_identified" , nullable = false)
+    private Boolean is_identified;
 
     @ManyToOne
-    @JoinColumn(name = "officeId", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "office_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Office office;
 
     @ManyToOne
-    @JoinColumn(name = "docId", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "doc_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Docs docs;
 
     @ManyToOne
-    @JoinColumn(name = "citizenshipId", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "citizenship_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Country country;
 
 
@@ -61,35 +61,35 @@ public class User {
 
     }
 
-    public User(Long id , Long officeId, String firstName, String secondName, String middleName, String position, String phone, Integer docCode, String docName, String docNumber, Date docDate, String citizenshipCode, Boolean isIdentified){
+    public User(Long id , Long office_id, String first_name, String second_name, String middle_name, String position, String phone, Integer doc_code, String doc_name, String doc_number, Date doc_date, String citizenship_code, Boolean is_identified){
         this.id = id;
-        this.officeId = officeId;
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.middleName = middleName;
+        this.office_id = office_id;
+        this.first_name = first_name;
+        this.second_name = second_name;
+        this.middle_name = middle_name;
         this.position = position;
         this.phone = phone;
-        this.docCode = docCode;
-        this.docName = docName;
-        this.docNumber = docNumber;
-        this.docDate = docDate;
-        this.citizenshipCode = citizenshipCode;
-        this.isIdentified = isIdentified;
+        this.doc_code = doc_code;
+        this.doc_name = doc_name;
+        this.doc_number = doc_number;
+        this.doc_date = doc_date;
+        this.citizenship_code = citizenship_code;
+        this.is_identified = is_identified;
     }
 
-    public User(Long officeId, String firstName, String secondName, String middleName, String position, String phone, Integer docCode, String docName, String docNumber, Date docDate, String citizenshipCode, Boolean isIdentified){
-        this.officeId = officeId;
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.middleName = middleName;
+    public User(Long office_id, String first_name, String second_name, String middle_name, String position, String phone, Integer doc_code, String doc_name, String doc_number, Date doc_date, String citizenship_code, Boolean is_identified){
+        this.office_id = office_id;
+        this.first_name = first_name;
+        this.second_name = second_name;
+        this.middle_name = middle_name;
         this.position = position;
         this.phone = phone;
-        this.docCode = docCode;
-        this.docName = docName;
-        this.docNumber = docNumber;
-        this.docDate = docDate;
-        this.citizenshipCode = citizenshipCode;
-        this.isIdentified = isIdentified;
+        this.doc_code = doc_code;
+        this.doc_name = doc_name;
+        this.doc_number = doc_number;
+        this.doc_date = doc_date;
+        this.citizenship_code = citizenship_code;
+        this.is_identified = is_identified;
     }
 
     public Long getId() {
@@ -97,7 +97,7 @@ public class User {
     }
 
     public Long getOffice_id(){
-        return officeId;
+        return office_id;
     }
 
     public String getPhone() {
@@ -105,35 +105,35 @@ public class User {
     }
 
     public Date getDoc_date() {
-        return docDate;
+        return doc_date;
     }
 
     public Integer getDoc_Code() {
-        return docCode;
+        return doc_code;
     }
 
     public Boolean isIs_identified() {
-        return isIdentified;
+        return is_identified;
     }
 
     public String getCitizenship_code() {
-        return citizenshipCode;
+        return citizenship_code;
     }
 
     public String getDoc_name() {
-        return docName;
+        return doc_name;
     }
 
     public String getDoc_number() {
-        return docNumber;
+        return doc_number;
     }
 
     public String getFirst_name() {
-        return firstName;
+        return first_name;
     }
 
     public String getMiddle_name() {
-        return middleName;
+        return middle_name;
     }
 
     public String getPosition() {
@@ -141,7 +141,7 @@ public class User {
     }
 
     public String getSecond_name() {
-        return secondName;
+        return second_name;
     }
 
     @Override

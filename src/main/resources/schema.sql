@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS Organization( -- таблица организаци
 CREATE TABLE IF NOT EXISTS Office( --офис организации
     id         INTEGER  PRIMARY KEY AUTO_INCREMENT, --id офиса
     version    INTEGER NOT NULL,
-    orgId      INTEGER NOT NULL, -- id организации
+    org_id      INTEGER NOT NULL, -- id организации
     name       VARCHAR(50) UNIQUE NOT NULL, --название офиса
     address    VARCHAR(50) NOT NULL,--адрес офиса
     phone      VARCHAR(50) UNIQUE NOT NULL, --телефоный номер офиса
@@ -24,22 +24,22 @@ CREATE TABLE IF NOT EXISTS Office( --офис организации
 
 CREATE TABLE IF NOT EXISTS User ( -- таблица работник
     id         INTEGER  PRIMARY KEY AUTO_INCREMENT, -- id работника
-    officeId   INTEGER NOT NULL, -- в каком офисе работает работник
-    firstName  VARCHAR(50) NOT NULL, --Имя работника
-    lastName   VARCHAR(50) NOT NULL, -- Фамилия работника
-    secondName VARCHAR(50) NOT NULL, -- Отчество работника
-    middleName VARCHAR(50) NOT NULL, -- Среднее имя(В англоязычных именах)
+    office_id   INTEGER NOT NULL, -- в каком офисе работает работник
+    first_name  VARCHAR(50) NOT NULL, --Имя работника
+    last_name   VARCHAR(50) NOT NULL, -- Фамилия работника
+    second_name VARCHAR(50) NOT NULL, -- Отчество работника
+    middle_name VARCHAR(50) NOT NULL, -- Среднее имя(В англоязычных именах)
     position  VARCHAR(50)  NOT NULL, -- должность работника
-    docId      INTEGER NOT NULL, -- id документа
-    citizenshipId       INTEGER NOT NULL, -- id страны.
-    isIdentified  BOOLEAN --индивицирован лм работник
+    doc_id      INTEGER NOT NULL, -- id документа
+    citizenship_id       INTEGER NOT NULL, -- id страны.
+    is_identified  BOOLEAN --индивицирован лм работник
     );
 
 CREATE TABLE IF NOT EXISTS docs( -- таблица документов
     id         INTEGER PRIMARY KEY AUTO_INCREMENT, -- id документа
     name       VARCHAR (100) NOT NULL, -- Название документа
     number     VARCHAR(50) NOT NULL, -- номер документа
-    docDate    DATE, -- дата создания документа
+    doc_date    DATE, -- дата создания документа
     code       INTEGER NOT NULL, -- код документа
      );
 
@@ -58,26 +58,26 @@ CREATE INDEX IX_Office_name ON Office (name);
 CREATE INDEX IX_Office_phone ON Office (phone);
 CREATE INDEX IX_Office_is_active ON Office (is_active);
 
-CREATE INDEX IX_User_firstName ON User (firstName);
-CREATE INDEX IX_User_secondName ON User  (secondName);
-CREATE INDEX IX_User_lastName ON User (lastName);
+CREATE INDEX IX_User_first_name ON User (first_name);
+CREATE INDEX IX_User_second_name ON User  (second_name);
+CREATE INDEX IX_User_last_name ON User (last_name);
 CREATE INDEX IX_User_user_position ON User  (position);
 
 
-CREATE INDEX IX_Office_orgId ON Office(orgId);
-ALTER TABLE Office ADD FOREIGN KEY (orgId) REFERENCES Organization(id);
+CREATE INDEX IX_Office_org_id ON Office(org_id);
+ALTER TABLE Office ADD FOREIGN KEY (org_id) REFERENCES Organization(id);
 -- orgId в таблице Office ссылыется по внешнему ключу
 -- на  id организации Organization(id)
 
-CREATE INDEX IX_User_OfficeId ON User (officeId);
-ALTER TABLE User ADD FOREIGN KEY (officeId) REFERENCES Office(id);
+CREATE INDEX IX_User_Office_id ON User (office_id);
+ALTER TABLE User ADD FOREIGN KEY (office_id) REFERENCES Office(id);
  -- officeId в таблице User_man ссылыется по внешнему ключу
  -- на  id офиса Office(id)
-CREATE INDEX IX_User_docId ON User (docId);
-ALTER TABLE User ADD FOREIGN KEY (docId) REFERENCES docs(id);
+CREATE INDEX IX_User_doc_id ON User (doc_id);
+ALTER TABLE User ADD FOREIGN KEY (doc_id) REFERENCES docs(id);
 
-CREATE INDEX IX_User_citizenshipId ON User (citizenshipId);
-ALTER TABLE User ADD FOREIGN KEY (citizenshipId) REFERENCES Citizenship(id);
+CREATE INDEX IX_User_citizenship_id ON User (citizenship_id);
+ALTER TABLE User ADD FOREIGN KEY (citizenship_id) REFERENCES Citizenship(id);
 
 -- КОММЕНТАРИИ
 COMMENT ON TABLE Organization IS 'таблица организаци';
@@ -91,7 +91,7 @@ COMMENT ON COLUMN Organization.kpp  IS 'кпп организации';
 COMMENT ON COLUMN Organization.is_active IS 'активна ли организация';
 
 COMMENT ON TABLE Office IS 'офис организации';
-COMMENT ON COLUMN Office.orgId IS 'id организации';
+COMMENT ON COLUMN Office.org_id IS 'id организации';
 COMMENT ON COLUMN Office.name IS 'название офиса';
 COMMENT ON COLUMN Office.address IS 'адрес офиса';
 COMMENT ON COLUMN Office.phone  IS 'телефоный номер офиса';
@@ -99,21 +99,21 @@ COMMENT ON COLUMN Office.is_active IS 'активный ли офис';
 
 COMMENT ON TABLE User IS 'таблица работник';
 COMMENT ON COLUMN User.id IS 'id работника';
-COMMENT ON COLUMN User.officeId  IS 'в каком офисе работает работник';
-COMMENT ON COLUMN User.firstName IS 'Имя работника';
-COMMENT ON COLUMN User.lastName  IS 'Фамилия работника';
-COMMENT ON COLUMN User.secondName IS 'Отчество работника';
-COMMENT ON COLUMN User.middleName IS 'Среднее имя(В англоязычных именах)';
+COMMENT ON COLUMN User.office_id  IS 'в каком офисе работает работник';
+COMMENT ON COLUMN User.first_name IS 'Имя работника';
+COMMENT ON COLUMN User.last_name  IS 'Фамилия работника';
+COMMENT ON COLUMN User.second_name IS 'Отчество работника';
+COMMENT ON COLUMN User.middle_name IS 'Среднее имя(В англоязычных именах)';
 COMMENT ON COLUMN User.position  IS 'должность работника';
-COMMENT ON COLUMN User.docId IS 'id документа';
-COMMENT ON COLUMN User.citizenshipId IS 'id страны.';
-COMMENT ON COLUMN User.isIdentified IS 'аиндивицирован лм работник';
+COMMENT ON COLUMN User.doc_id IS 'id документа';
+COMMENT ON COLUMN User.citizenship_id IS 'id страны.';
+COMMENT ON COLUMN User.is_identified IS 'аиндивицирован лм работник';
 
 COMMENT ON TABLE docs IS 'таблица документов';
 COMMENT ON COLUMN docs.id IS 'id документа';
 COMMENT ON COLUMN docs.name IS 'Название документа';
 COMMENT ON COLUMN docs.number IS 'номер документа';
-COMMENT ON COLUMN docs.docDate  IS 'дата создания документа';
+COMMENT ON COLUMN docs.doc_date  IS 'дата создания документа';
 COMMENT ON COLUMN docs.code IS 'код документа';
 
 COMMENT ON TABLE Citizenship IS 'таблица -Страна';

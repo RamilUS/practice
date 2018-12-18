@@ -13,22 +13,22 @@ import java.util.Set;
 public class Office {
     public Office() {
     }
-/*public Office (Long id, Long orgId, String name, String address, String phone, Boolean isActive){
+public Office (Long id, Long org_id, String name, String address, String phone, Boolean is_active){
             this.id = id;
-            this.orgId = orgId;
+            this.org_id = org_id;
             this.name = name;
             this.address = address;
             this.phone = phone;
-            this.isActive = isActive;
+            this.is_active = is_active;
         }
-    public Office (Long orgId, String name, String address, String phone, Boolean isActive){
-            this.orgId = orgId;
+    public Office (Long org_id, String name, String address, String phone, Boolean is_active){
+            this.org_id = org_id;
             this.name = name;
             this.address = address;
             this.phone = phone;
-            this.isActive = isActive;
+            this.is_active = is_active;
         }
-*/
+
         @Id
         @GeneratedValue (strategy = GenerationType.IDENTITY)
         @Column(nullable = false)
@@ -36,8 +36,8 @@ public class Office {
         @Version
         private Integer version;
 
-        @Column(name = "orgId")
-        private Long orgId;
+        @Column(name = "org_id")
+        private Long org_id;
 
         @Column(name = "name", length = 50, nullable = false)
         private String name;
@@ -48,20 +48,20 @@ public class Office {
         @Column(name = "phone", length = 15, nullable = false)
         private String phone;
 
-        @Column(name= "isActive", nullable = false)
-        private Boolean isActive;
+        @Column(name= "is_active", nullable = false)
+        private Boolean is_active;
 
     @OneToMany(mappedBy = "office")
     public Set<User> user;
 
     @ManyToOne
-    @JoinColumn(name = "orgId", insertable = false, updatable = false)
+    @JoinColumn(name = "org_id", insertable = false, updatable = false)
     public Organization organization;
 
         public Long getId() {
             return id;
         }
-        public Long getOrgId(){return orgId;}
+        public Long getOrgId(){return org_id;}
         public String getName() {
             return name;
         }
@@ -72,7 +72,7 @@ public class Office {
             return phone;
         }
         public Boolean isActive() {
-            return isActive;
+            return is_active;
         }
 
         @Override
