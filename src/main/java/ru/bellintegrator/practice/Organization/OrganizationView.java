@@ -46,6 +46,6 @@ public class OrganizationView {
 
     @Override
     public String toString() {
-        return "{id:" + id + ";ame:" + name+ ";fullName:" + fullName + ";address:" + address + ";phone:" + phone +  "}";
+        return "{id:" + id + ";name:" + name+ ";fullName:" + fullName + ";address:" + address + ";phone:" + phone +  "}";
     }
 }

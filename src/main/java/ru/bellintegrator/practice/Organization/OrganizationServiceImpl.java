@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.bellintegrator.practice.housePerson.model.mapper.MapperFacade;
 
-import java.sql.SQLException;
+
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -27,25 +27,25 @@ public class OrganizationServiceImpl implements OrganizationService {
 
     @Override
     @Transactional
-    public List<OrganizationView> organizations() throws SQLException {
+    public List<OrganizationView> organizations()  {
         List<Organization> all = organizationDao.all();
         return mapperFacade.mapAsList(all,OrganizationView.class);
     }
 
     @Override
     @Transactional
-    public void saveOrganization(OrganizationView view) throws SQLException {
+    public void saveOrganization(OrganizationView view)  {
         Organization organization = new Organization(view.id,view.name, view.fullName, view.address,view.phone,view.inn,view.kpp,view.isActive);
         organizationDao.save(organization);
     }
     @Override
-    public OrganizationView loadById(int id) throws SQLException {
+    public OrganizationView loadById(int id)  {
         Organization loadById = organizationDao.loadById(id);
         return mapperFacade.map(loadById,OrganizationView.class);
     }
 
    @Override
-    public void updateOrganization(OrganizationView view) throws SQLException {
+    public void updateOrganization(OrganizationView view){
        Organization organization = new Organization(view.id,view.name, view.fullName, view.address,view.phone,view.inn,view.kpp,view.isActive);
         organizationDao.update(organization);
     }

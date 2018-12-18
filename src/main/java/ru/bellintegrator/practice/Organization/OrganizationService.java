@@ -14,12 +14,12 @@ import java.util.List;
 @Validated
 public interface OrganizationService {
 
-    List<OrganizationView> organizations() throws SQLException;
+    List<OrganizationView> organizations() ;
 
-    void saveOrganization(OrganizationView organizationView) throws SQLException ;
+    void saveOrganization(OrganizationView organizationView) ;
 
-    void updateOrganization(OrganizationView organizationView) throws SQLException ;
+    void updateOrganization(OrganizationView organizationView) ;
 
-    OrganizationView loadById(int id) throws SQLException ;
+    OrganizationView loadById(int id) ;
 
 }

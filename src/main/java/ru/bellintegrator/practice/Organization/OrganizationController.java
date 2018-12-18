@@ -35,7 +35,7 @@ public class OrganizationController {
     }
 
     @ApiOperation(value = "Получить список всех орг", httpMethod = "GET")
-    @GetMapping("/list")
+    @GetMapping("/organizations")
     public List<OrganizationView> organizations() { return organizationService.organizations();
     }
 }

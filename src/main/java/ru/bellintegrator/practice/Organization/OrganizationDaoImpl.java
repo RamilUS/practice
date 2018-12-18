@@ -26,7 +26,7 @@ public class OrganizationDaoImpl implements OrganizationDao {
     }
 
     @Override
-    public List<Organization> all() throws SQLException {
+    public List<Organization> all()  {
         CriteriaBuilder builder = em.getCriteriaBuilder();
         CriteriaQuery cQuery = builder.createQuery(Organization.class);
         cQuery.from(Organization.class);
@@ -36,20 +36,20 @@ public class OrganizationDaoImpl implements OrganizationDao {
 
 
     @Override
-    public Organization loadById(int id) throws SQLException {
+    public Organization loadById(int id) {
         return em.find(Organization.class, id);
     }
 
 
     @Override
-    public void save(Organization organization) throws SQLException {
+    public void save(Organization organization) {
         em.persist(organization);
     }
 
 
 
     @Override
-    public void update(Organization organization) throws SQLException {
+    public void update(Organization organization)  {
         CriteriaBuilder builder = em.getCriteriaBuilder();
         CriteriaUpdate<Organization> cUpdate = builder.createCriteriaUpdate(Organization.class);
         Root organizations = cUpdate.from(Organization.class);

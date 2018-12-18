@@ -1,14 +1,14 @@
 package ru.bellintegrator.practice.Organization;
 
-import java.sql.SQLException;
+
 import java.util.List;
 
 public interface OrganizationDao {
-    List<Organization> all() throws SQLException;
+    List<Organization> all() ;
 
-    Organization loadById(int id) throws SQLException;
+    Organization loadById(int id) ;
 
-    void save(Organization organization) throws SQLException;
+    void save(Organization organization) ;
 
-    void update(Organization organization) throws SQLException;
+    void update(Organization organization) ;
 }
