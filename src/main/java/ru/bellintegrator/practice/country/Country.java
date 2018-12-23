@@ -19,8 +19,8 @@ public class Country {
     /**
      * Служебное поле Hibernate
      */
-    @Version
-    private Integer version;
+    /*@Version
+    private Integer version;*/
 
     /**
      * Код страны

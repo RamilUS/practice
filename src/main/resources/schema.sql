@@ -24,12 +24,14 @@ CREATE TABLE IF NOT EXISTS Office( --офис организации
 
 CREATE TABLE IF NOT EXISTS User ( -- таблица работник
     id         INTEGER  PRIMARY KEY AUTO_INCREMENT, -- id работника
+    version    INTEGER NOT NULL,
     office_id   INTEGER NOT NULL, -- в каком офисе работает работник
     first_name  VARCHAR(50) NOT NULL, --Имя работника
     last_name   VARCHAR(50) NOT NULL, -- Фамилия работника
     second_name VARCHAR(50) NOT NULL, -- Отчество работника
     middle_name VARCHAR(50) NOT NULL, -- Среднее имя(В англоязычных именах)
     position  VARCHAR(50)  NOT NULL, -- должность работника
+    phone      VARCHAR(50) UNIQUE NOT NULL,
     doc_id      INTEGER NOT NULL, -- id документа
     citizenship_id       INTEGER NOT NULL, -- id страны.
     is_identified  BOOLEAN --индивицирован лм работник

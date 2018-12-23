@@ -15,32 +15,27 @@ public class User {
     @Id
     @GeneratedValue
     @Column(name = "id",nullable = false)
-    private Long id;
+    private Integer id;
     @Version
     private Integer Version;
     @Column(name = "office_id")
-    private Long office_id;
+    private Integer office_id;
     @Column (name = "first_name", length = 50,nullable = false)
     private String first_name;
     @Column (name = "second_name", length = 50,nullable = false)
     private String second_name;
+    @Column (name = "last_name", length = 50,nullable = false)
+    private String last_name;
     @Column (name = "middle_name", length = 50,nullable = false)
     private String middle_name;
     @Column (name = "position", length = 30,nullable = false)
     private String position;
     @Column (name = "phone", length = 15,nullable = false)
     private String phone;
-    @Column(name = "doc_code" , nullable = false)
-    private Integer doc_code;
-    @Column (name = "doc_name", length = 50,nullable = false)
-    private String doc_name;
-    @Column (name = "doc_number", length = 15,nullable = false)
-    private String doc_number;
-    @Column(name = "doc_date" , nullable = false)
-    @Temporal(TemporalType.DATE)
-    private Date doc_date;
-    @Column (name = "citizenship_code", length = 10,nullable = false)
-    private String citizenship_code;
+    @Column(name = "doc_id" , nullable = false)
+    private Integer doc_id;
+    @Column (name = "citizenship_id", length = 10,nullable = false)
+    private Integer citizenship_id;
     @Column(name = "is_identified" , nullable = false)
     private Boolean is_identified;
 
@@ -61,87 +56,106 @@ public class User {
 
     }
 
-    public User(Long id , Long office_id, String first_name, String second_name, String middle_name, String position, String phone, Integer doc_code, String doc_name, String doc_number, Date doc_date, String citizenship_code, Boolean is_identified){
+    public User(Integer id , Integer office_id, String first_name,String last_name, String second_name, String middle_name, String position, String phone, Integer doc_id, Integer citizenship_id, Boolean is_identified){
         this.id = id;
         this.office_id = office_id;
         this.first_name = first_name;
+        this.last_name = last_name;
         this.second_name = second_name;
         this.middle_name = middle_name;
         this.position = position;
         this.phone = phone;
-        this.doc_code = doc_code;
-        this.doc_name = doc_name;
-        this.doc_number = doc_number;
-        this.doc_date = doc_date;
-        this.citizenship_code = citizenship_code;
+        this.doc_id = doc_id;
+        this.citizenship_id = citizenship_id;
         this.is_identified = is_identified;
     }
 
-    public User(Long office_id, String first_name, String second_name, String middle_name, String position, String phone, Integer doc_code, String doc_name, String doc_number, Date doc_date, String citizenship_code, Boolean is_identified){
-        this.office_id = office_id;
-        this.first_name = first_name;
-        this.second_name = second_name;
-        this.middle_name = middle_name;
-        this.position = position;
-        this.phone = phone;
-        this.doc_code = doc_code;
-        this.doc_name = doc_name;
-        this.doc_number = doc_number;
-        this.doc_date = doc_date;
-        this.citizenship_code = citizenship_code;
-        this.is_identified = is_identified;
-    }
-
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public Long getOffice_id(){
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getOffice_id() {
         return office_id;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public Date getDoc_date() {
-        return doc_date;
-    }
-
-    public Integer getDoc_Code() {
-        return doc_code;
-    }
-
-    public Boolean isIs_identified() {
-        return is_identified;
-    }
-
-    public String getCitizenship_code() {
-        return citizenship_code;
-    }
-
-    public String getDoc_name() {
-        return doc_name;
-    }
-
-    public String getDoc_number() {
-        return doc_number;
+    public void setOffice_id(Integer office_id) {
+        this.office_id = office_id;
     }
 
     public String getFirst_name() {
         return first_name;
     }
 
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
+    }
+
+    public String getSecond_name() {
+        return second_name;
+    }
+
+    public void setSecond_name(String second_name) {
+        this.second_name = second_name;
+    }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
+    }
+
     public String getMiddle_name() {
         return middle_name;
+    }
+
+    public void setMiddle_name(String middle_name) {
+        this.middle_name = middle_name;
     }
 
     public String getPosition() {
         return position;
     }
 
-    public String getSecond_name() {
-        return second_name;
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Integer getDoc_id() {
+        return doc_id;
+    }
+
+    public void setDoc_id(Integer doc_id) {
+        this.doc_id = doc_id;
+    }
+
+    public Integer getCitizenship_id() {
+        return citizenship_id;
+    }
+
+    public void setCitizenship_id(Integer citizenship_id) {
+        this.citizenship_id = citizenship_id;
+    }
+
+    public Boolean getIs_identified() {
+        return is_identified;
+    }
+
+    public void setIs_identified(Boolean is_identified) {
+        this.is_identified = is_identified;
     }
 
     @Override

@@ -23,19 +23,19 @@ INSERT INTO Citizenship (id, name, code) VALUES (1, 'РФ', 323);
 
 INSERT INTO Citizenship (id, name, code) VALUES (2, 'ЕС',584);
 
-INSERT INTO User (id, office_id, first_name, last_name, second_name, middle_name, position, doc_id, citizenship_id, is_identified) VALUES (1, 1, 'Пётр', 'иванов', 'иванович', 'iii', 'менеджер',3,1,true);
+INSERT INTO User (id,version, office_id, first_name, last_name, second_name, middle_name, position, phone, doc_id, citizenship_id, is_identified) VALUES (1,1, 1, 'Пётр', 'иванов', 'иванович', 'iii', 'менеджер','333331',3,1,true);
 
-INSERT INTO User (id, office_id, first_name, last_name, second_name, middle_name, position, doc_id, citizenship_id, is_identified) VALUES (2, 1, 'Яушев ', 'Юрий ', 'Мечиславович', 'iii', 'директор',1,1,true);
+INSERT INTO User (id,version, office_id, first_name, last_name, second_name, middle_name, position, phone, doc_id, citizenship_id, is_identified) VALUES (2,1, 1, 'Яушев ', 'Юрий ', 'Мечиславович', 'iii', 'директор','333332',1,1,true);
 
-INSERT INTO User(id,  office_id, first_name, last_name, second_name, middle_name, position, doc_id, citizenship_id, is_identified) VALUES (3, 2, ' Тимур ', 'Гавриленко', 'Фомевич', 'iii', 'менеджер',5,2,true);
+INSERT INTO User(id, version, office_id, first_name, last_name, second_name, middle_name, position, phone, doc_id, citizenship_id, is_identified) VALUES (3, 1,2, ' Тимур ', 'Гавриленко', 'Фомевич', 'iii', 'менеджер','333333',5,2,true);
 
-INSERT INTO User (id,  office_id, first_name, last_name, second_name, middle_name, position, doc_id, citizenship_id, is_identified) VALUES (4, 2, 'Кондрат ', 'Катасонов ', 'Владимирович', 'iii', 'директор',2,1,true);
+INSERT INTO User (id,version,  office_id, first_name, last_name, second_name, middle_name, position, phone, doc_id, citizenship_id, is_identified) VALUES (4,1, 2, 'Кондрат ', 'Катасонов ', 'Владимирович', 'iii', 'директор','333334',2,1,true);
 
-INSERT INTO User(id,  office_id, first_name, last_name, second_name, middle_name, position, doc_id, citizenship_id, is_identified) VALUES (5, 3, ' Севастьян ', 'Рождественский', 'Касьянович', 'iii', 'менеджер',8,2,true);
+INSERT INTO User(id,version,  office_id, first_name, last_name, second_name, middle_name, position, phone, doc_id, citizenship_id, is_identified) VALUES (5,1, 3, ' Севастьян ', 'Рождественский', 'Касьянович', 'iii', 'менеджер','333335',8,2,true);
 
-INSERT INTO User(id,  office_id, first_name, last_name, second_name, middle_name, position, doc_id, citizenship_id, is_identified) VALUES (6, 3, ' Никанор ', 'Ябловский', 'Сидорович', 'iii', 'директор',6,1,true);
+INSERT INTO User(id, version, office_id, first_name, last_name, second_name, middle_name, position, phone, doc_id, citizenship_id, is_identified) VALUES (6, 1,3, ' Никанор ', 'Ябловский', 'Сидорович', 'iii', 'директор','333336',6,1,true);
 
-INSERT INTO User (id,  office_id, first_name, last_name, second_name, middle_name, position, doc_id, citizenship_id, is_identified) VALUES (7, 4, ' Роман ', 'Потапов', ' Аникитевич', 'iii', 'менеджер',4,1,true);
+INSERT INTO User (id,version,  office_id, first_name, last_name, second_name, middle_name, position, phone, doc_id, citizenship_id, is_identified) VALUES (7,1, 4, ' Роман ', 'Потапов', ' Аникитевич', 'iii', 'менеджер','333337',4,1,true);
 
 
-INSERT INTO User (id,  office_id, first_name, last_name, second_name, middle_name, position, doc_id, citizenship_id, is_identified) VALUES (8, 4, ' Ираклий ', 'Макаров', 'Сергеевич', 'iii', 'уборщик',7,1,true);
+INSERT INTO User (id, version, office_id, first_name, last_name, second_name, middle_name, position, phone, doc_id, citizenship_id, is_identified) VALUES (8,1, 4, ' Ираклий ', 'Макаров', 'Сергеевич', 'iii', 'уборщик','333338',7,1,true);
