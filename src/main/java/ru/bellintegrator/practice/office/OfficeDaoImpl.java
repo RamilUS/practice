@@ -37,6 +37,19 @@ public class OfficeDaoImpl implements OfficeDao {
     public Office loadById(Integer id) {
         return em.find(Office.class, id);
     }
+
+    @Override
+    public List<Office> loadByOrgId(Integer org_id)  {
+        CriteriaBuilder builder = this.em.getCriteriaBuilder();
+        CriteriaQuery<Office> cQuery = builder.createQuery(Office.class);
+        Root<Office> root = cQuery.from(Office.class);
+        cQuery.select(root);
+        cQuery.where(builder.equal(root.get("org_id"),org_id));
+        Query query = em.createQuery(cQuery);
+        return query.getResultList(); //em.find(Office.class, org_id);
+    }
+
+
     @Override
     public void save(Office organization) {
         em.persist(organization);

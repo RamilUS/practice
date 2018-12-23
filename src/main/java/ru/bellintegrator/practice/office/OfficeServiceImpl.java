@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.bellintegrator.practice.housePerson.model.mapper.MapperFacade;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * {@inheritDoc}
@@ -53,6 +54,18 @@ public class OfficeServiceImpl implements OfficeService {
         OfficeView offView = mapperFacade.map(loadById,OfficeView.class);
         return offView;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+
+    @Override
+    public List<OfficeView> loadByOrgId(Integer org_id)  {
+        List<Office> loadByOrgId = officeDao.loadByOrgId(org_id);
+        List<OfficeView> ListoffView = mapperFacade.mapAsList(loadByOrgId,OfficeView.class);
+        return ListoffView;
+    }
+
 
     /**
      * {@inheritDoc}

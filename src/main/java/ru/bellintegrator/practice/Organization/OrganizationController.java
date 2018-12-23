@@ -42,5 +42,13 @@ public class OrganizationController {
     @GetMapping("/{id}")
     public OrganizationView loadById(@PathVariable Integer id ){
        // Integer idI=new Integer(id);
-        return organizationService.loadById(id);}
+        return organizationService.loadById(id);
+    }
+
+    @ApiOperation(value = "Обновить информацию об организации", httpMethod = "POST")
+    @PostMapping("/update")
+    public void updateOrganization(@RequestBody OrganizationView view) throws Exception {
+         organizationService.updateOrganization(view);
+    }
+
 }

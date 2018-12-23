@@ -56,6 +56,6 @@ public class OfficeView {
 
     @Override
     public String toString() {
-        return "{id:" + id + ";name:" + name+  ";address:" + address + ";phone:" + phone + ";is_active:" + is_active + "}";
+        return "{" +"\n"+"id:" + id +";"+"\n"+ "name:" + name+";"+"\n"+  "address:" + address+";" +"\n"+ "phone:" + phone +";"+"\n"+ "is_active:" + is_active+";" +"\n"+ "}";
     }
 }

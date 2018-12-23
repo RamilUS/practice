@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS Organization( -- таблица организаци
 CREATE TABLE IF NOT EXISTS Office( --офис организации
     id         INTEGER  PRIMARY KEY AUTO_INCREMENT, --id офиса
     version    INTEGER NOT NULL,
-    org_id      INTEGER NOT NULL, -- id организации
+    org_id     INTEGER NOT NULL, -- id организации
     name       VARCHAR(50) UNIQUE NOT NULL, --название офиса
     address    VARCHAR(50) NOT NULL,--адрес офиса
     phone      VARCHAR(50) UNIQUE NOT NULL, --телефоный номер офиса

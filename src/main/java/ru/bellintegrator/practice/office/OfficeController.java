@@ -34,11 +34,18 @@ public class OfficeController {
 
     @ApiOperation(value = "Получить список всех офисов", httpMethod = "GET")
     @GetMapping("/list")
-    public List<OfficeView> organizations() { return officeService.offices();
+    public List<OfficeView> offices() { return officeService.offices();
     }
+
+    @ApiOperation(value = "Получить список офисов по org_id", httpMethod = "GET")
+    @GetMapping("/list/{org_id}")
+    public List<OfficeView> loadByOrgId(@PathVariable Integer org_id ) { return officeService.loadByOrgId(org_id);
+    }
+
+
     @ApiOperation(value = "Выбрать организацию по ID",httpMethod = "GET")
     @GetMapping("/{id}")
-    public OfficeView loadById(@PathVariable Integer id ){
-        // Integer idI=new Integer(id);
-        return officeService.loadById(id);}
+    public String loadById(@PathVariable Integer id ){
+        //return officeService.loadById(id);
+        return "{data:" +"\n"+ officeService.loadById(id).toString() + "}";}
 }

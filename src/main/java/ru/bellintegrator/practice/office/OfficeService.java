@@ -29,4 +29,12 @@ public interface OfficeService {
      */
     OfficeView loadById(Integer id) ;
 
+    /**
+     * Получить организацию по org_id
+     *
+     * @return {@Office}
+     * @param org_id
+     */
+    List<OfficeView> loadByOrgId(Integer org_id) ;
+
 }
