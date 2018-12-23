@@ -13,7 +13,7 @@ import java.util.Set;
 public class Office {
     public Office() {
     }
-public Office (Long id, Long org_id, String name, String address, String phone, Boolean is_active){
+public Office (Integer id, Integer org_id, String name, String address, String phone, Boolean is_active){
             this.id = id;
             this.org_id = org_id;
             this.name = name;
@@ -21,7 +21,7 @@ public Office (Long id, Long org_id, String name, String address, String phone, 
             this.phone = phone;
             this.is_active = is_active;
         }
-    public Office (Long org_id, String name, String address, String phone, Boolean is_active){
+    public Office (Integer org_id, String name, String address, String phone, Boolean is_active){
             this.org_id = org_id;
             this.name = name;
             this.address = address;
@@ -32,12 +32,12 @@ public Office (Long id, Long org_id, String name, String address, String phone, 
         @Id
         @GeneratedValue (strategy = GenerationType.IDENTITY)
         @Column(nullable = false)
-        private Long id;
+        private Integer id;
         @Version
         private Integer version;
 
         @Column(name = "org_id")
-        private Long org_id;
+        private Integer org_id;
 
         @Column(name = "name", length = 50, nullable = false)
         private String name;
@@ -58,10 +58,10 @@ public Office (Long id, Long org_id, String name, String address, String phone, 
     @JoinColumn(name = "org_id", insertable = false, updatable = false)
     public Organization organization;
 
-        public Long getId() {
+        public Integer getId() {
             return id;
         }
-        public Long getOrgId(){return org_id;}
+        public Integer getOrgId(){return org_id;}
         public String getName() {
             return name;
         }
@@ -71,7 +71,7 @@ public Office (Long id, Long org_id, String name, String address, String phone, 
         public String getPhone() {
             return phone;
         }
-        public Boolean isActive() {
+        public Boolean getIsActive() {
             return is_active;
         }
 
