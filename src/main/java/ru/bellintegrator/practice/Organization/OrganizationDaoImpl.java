@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.CriteriaUpdate;
@@ -36,16 +37,13 @@ public class OrganizationDaoImpl implements OrganizationDao {
 
 
     @Override
-    public Organization loadById(int id) {
+    public Organization loadById(Integer id) {
         return em.find(Organization.class, id);
     }
-
-
     @Override
     public void save(Organization organization) {
         em.persist(organization);
     }
-
 
 
     @Override

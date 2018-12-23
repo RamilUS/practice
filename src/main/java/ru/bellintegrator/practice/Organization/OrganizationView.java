@@ -9,6 +9,7 @@ import javax.validation.constraints.*;
 @ApiModel(description = "Организация")
 public class OrganizationView {
 
+
     @NotEmpty
     @ApiModelProperty(value = "Уникальный идентификатор", hidden = true, example = "1")
     public Integer id;
@@ -23,8 +24,6 @@ public class OrganizationView {
     public String full_name;
 
     @NotNull(message = "address cannot be null")
-    @Min(18)
-    @Max(200)
     @ApiModelProperty(value = "Адрес", example = "Сосновая 27")
     public String address;
 
@@ -40,12 +39,34 @@ public class OrganizationView {
     @ApiModelProperty(value = "Уникальный идентификатор", hidden = true, example = "1")
     public String phone;
 
-    @NotEmpty
-    @ApiModelProperty(value = "Уникальный идентификатор", hidden = true, example = "1")
+
+    @ApiModelProperty
     public Boolean is_active;
+
+    public OrganizationView() {
+    }
+
+    public OrganizationView(Integer id, @NotEmpty @Size(max = 45) String name, @NotEmpty @Size(max = 12) String inn, @NotEmpty Boolean is_active) {
+        this.id = id;
+        this.name = name;
+        this.inn = inn;
+        this.is_active = is_active;
+    }
+
+    public OrganizationView(@NotEmpty Integer id, @NotEmpty @Size(max = 45) String name, @NotEmpty @Size(max = 100) String full_name, @NotEmpty @Size(max = 12) String inn, @NotEmpty @Size(max = 9) String kpp, @NotEmpty @Size(max = 100) String address, @Size(max = 11) String phone, @NotEmpty Boolean is_active) {
+        this.id = id;
+        this.name = name;
+        this.full_name = full_name;
+        this.inn = inn;
+        this.kpp = kpp;
+        this.address = address;
+        this.phone = phone;
+        this.is_active = is_active;
+    }
+
 
     @Override
     public String toString() {
-        return "{id:" + id + ";name:" + name+ ";full_name:" + full_name + ";address:" + address + ";phone:" + phone +  "}";
+        return "{id:" + id + ";name:" + name+ ";full_name:" + full_name + ";address:" + address + ";phone:" + phone + ";is_actiive:" + is_active + "}";
     }
 }

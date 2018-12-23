@@ -13,13 +13,24 @@ import java.util.List;
  */
 @Validated
 public interface OrganizationService {
+    /**
+     * Получить список организаций
+     *
+     * @return {@Organization}
+     */
 
     List<OrganizationView> organizations() ;
+
 
     void saveOrganization(OrganizationView organizationView) ;
 
     void updateOrganization(OrganizationView organizationView) ;
-
-    OrganizationView loadById(int id) ;
+    /**
+     * Получить организацию по id
+     *
+     * @return {@Organization}
+     * @param id
+     */
+   OrganizationView loadById(Integer id) ;
 
 }

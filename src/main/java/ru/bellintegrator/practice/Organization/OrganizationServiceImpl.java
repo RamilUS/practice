@@ -13,6 +13,10 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+/**
+ * {@inheritDoc}
+ */
+
 @Service
 public class OrganizationServiceImpl implements OrganizationService {
     //private final Logger log = LoggerFactory.getLogger(getClass());
@@ -25,12 +29,19 @@ public class OrganizationServiceImpl implements OrganizationService {
         this.mapperFacade= mapperFacade;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+
     @Override
     @Transactional
     public List<OrganizationView> organizations()  {
         List<Organization> all = organizationDao.all();
         return mapperFacade.mapAsList(all,OrganizationView.class);
     }
+    /**
+     * {@inheritDoc}
+     */
 
     @Override
     @Transactional
@@ -38,11 +49,21 @@ public class OrganizationServiceImpl implements OrganizationService {
         Organization organization = new Organization(view.id,view.name, view.full_name, view.address,view.phone,view.inn,view.kpp,view.is_active);
         organizationDao.save(organization);
     }
+
+    /**
+     * {@inheritDoc}
+     */
+
     @Override
-    public OrganizationView loadById(int id)  {
+    public OrganizationView loadById(Integer id)  {
         Organization loadById = organizationDao.loadById(id);
-        return mapperFacade.map(loadById,OrganizationView.class);
+        OrganizationView orgView = mapperFacade.map(loadById,OrganizationView.class);
+        return orgView;
     }
+
+    /**
+     * {@inheritDoc}
+     */
 
    @Override
     public void updateOrganization(OrganizationView view){

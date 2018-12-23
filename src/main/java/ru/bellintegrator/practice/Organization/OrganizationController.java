@@ -15,7 +15,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @Api(value = "OrganizationController", description = "Управление информацией о людях")
 @RestController
-@RequestMapping(value = "/", produces = APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/organization", produces = APPLICATION_JSON_VALUE)
 public class OrganizationController {
     private final OrganizationService organizationService;
 
@@ -24,7 +24,7 @@ public class OrganizationController {
         this.organizationService = organizationService;
     }
 
-    @ApiOperation(value = "Добавить новую орг", httpMethod = "POST")
+    @ApiOperation(value = "Получить организацию по заданному фильтру", httpMethod = "POST")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Success", response = String.class),
             @ApiResponse(code = 404, message = "Not Found"),
@@ -35,7 +35,12 @@ public class OrganizationController {
     }
 
     @ApiOperation(value = "Получить список всех орг", httpMethod = "GET")
-    @GetMapping("/organizations")
+    @GetMapping("/list")
     public List<OrganizationView> organizations() { return organizationService.organizations();
     }
+    @ApiOperation(value = "Выбрать организацию по ID",httpMethod = "GET")
+    @GetMapping("/{id}")
+    public OrganizationView loadById(@PathVariable Integer id ){
+       // Integer idI=new Integer(id);
+        return organizationService.loadById(id);}
 }
