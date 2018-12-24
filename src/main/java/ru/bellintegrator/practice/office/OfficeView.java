@@ -33,29 +33,29 @@ public class OfficeView {
 
 
     @ApiModelProperty
-    public Boolean is_active;
+    public Boolean active;
 
     public OfficeView() {
     }
 
-    public OfficeView(Integer org_id, @NotEmpty @Size(max = 45) String name, @NotEmpty @Size(max = 12) String phone, @NotEmpty Boolean is_active) {
+    public OfficeView(Integer org_id, @NotEmpty @Size(max = 45) String name, @NotEmpty @Size(max = 12) String phone, @NotEmpty Boolean active) {
         this.org_id = org_id;
         this.name = name;
         this.phone = phone;
-        this.is_active = is_active;
+        this.active = active;
     }
 
-    public OfficeView(@NotEmpty Integer id, @NotEmpty @Size(max = 45) String name, @NotEmpty @Size(max = 100) String address, @Size(max = 11) String phone, @NotEmpty Boolean is_active) {
+    public OfficeView(@NotEmpty Integer id, @NotEmpty @Size(max = 45) String name, @NotEmpty @Size(max = 100) String address, @Size(max = 11) String phone, @NotEmpty Boolean active) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.phone = phone;
-        this.is_active = is_active;
+        this.active = active;
     }
 
 
     @Override
     public String toString() {
-        return "{" +"\n"+"id:" + id +";"+"\n"+ "name:" + name+";"+"\n"+  "address:" + address+";" +"\n"+ "phone:" + phone +";"+"\n"+ "is_active:" + is_active+";" +"\n"+ "}";
+        return "{" +"\n"+"id:" + id +";"+"\n"+ "name:" + name+";"+"\n"+  "address:" + address+";" +"\n"+ "phone:" + phone +";"+"\n"+ "active:" + active+";" +"\n"+ "}";
     }
 }

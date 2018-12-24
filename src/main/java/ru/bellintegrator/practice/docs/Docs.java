@@ -15,7 +15,7 @@ public class Docs {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private Long id;
+    private Integer id;
    /* @Version
     private Integer version;*/
     @Column(name = "name",length = 50,nullable = false)
@@ -28,7 +28,7 @@ public class Docs {
     public Set<User> user;
     
     public String getName(){return name;}
-    public Long getId (){return id;}
+    public Integer getId (){return id;}
     public Integer getCode() {return code;}
 
 }

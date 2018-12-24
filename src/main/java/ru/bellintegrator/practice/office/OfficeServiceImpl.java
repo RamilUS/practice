@@ -40,7 +40,7 @@ public class OfficeServiceImpl implements OfficeService {
     @Override
     @Transactional
     public void saveOffice(OfficeView view)  {
-        Office office = new Office(view.id, view.org_id,view.name, view.address,view.phone, view.is_active);
+        Office office = new Office(view.id, view.org_id,view.name, view.address,view.phone, view.active);
         officeDao.save(office);
     }
 
@@ -73,7 +73,7 @@ public class OfficeServiceImpl implements OfficeService {
 
     @Override
     public void updateOffice(OfficeView view){
-        Office organization = new Office(view.id,view.org_id, view.name, view.address,view.phone,view.is_active);
+        Office organization = new Office(view.id,view.org_id, view.name, view.address,view.phone,view.active);
         officeDao.update(organization);
     }
 }

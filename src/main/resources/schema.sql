@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS Office( --офис организации
     name       VARCHAR(50) UNIQUE NOT NULL, --название офиса
     address    VARCHAR(50) NOT NULL,--адрес офиса
     phone      VARCHAR(50) UNIQUE NOT NULL, --телефоный номер офиса
-    is_active   BOOLEAN --активный ли офис
+    active   BOOLEAN --активный ли офис
     );
 
 CREATE TABLE IF NOT EXISTS User ( -- таблица работник
@@ -58,7 +58,7 @@ CREATE INDEX IX_Organization_is_active ON Organization (is_active);
 
 CREATE INDEX IX_Office_name ON Office (name);
 CREATE INDEX IX_Office_phone ON Office (phone);
-CREATE INDEX IX_Office_is_active ON Office (is_active);
+CREATE INDEX IX_Office_active ON Office (active);
 
 CREATE INDEX IX_User_first_name ON User (first_name);
 CREATE INDEX IX_User_second_name ON User  (second_name);
@@ -97,7 +97,7 @@ COMMENT ON COLUMN Office.org_id IS 'id организации';
 COMMENT ON COLUMN Office.name IS 'название офиса';
 COMMENT ON COLUMN Office.address IS 'адрес офиса';
 COMMENT ON COLUMN Office.phone  IS 'телефоный номер офиса';
-COMMENT ON COLUMN Office.is_active IS 'активный ли офис';
+COMMENT ON COLUMN Office.active IS 'активный ли офис';
 
 COMMENT ON TABLE User IS 'таблица работник';
 COMMENT ON COLUMN User.id IS 'id работника';

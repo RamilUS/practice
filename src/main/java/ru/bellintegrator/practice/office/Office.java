@@ -13,20 +13,20 @@ import java.util.Set;
 public class Office {
     public Office() {
     }
-public Office (Integer id, Integer org_id, String name, String address, String phone, Boolean is_active){
+public Office (Integer id, Integer org_id, String name, String address, String phone, Boolean active){
             this.id = id;
             this.org_id = org_id;
             this.name = name;
             this.address = address;
             this.phone = phone;
-            this.is_active = is_active;
+            this.active = active;
         }
-    public Office (Integer org_id, String name, String address, String phone, Boolean is_active){
+    public Office (Integer org_id, String name, String address, String phone, Boolean active){
             this.org_id = org_id;
             this.name = name;
             this.address = address;
             this.phone = phone;
-            this.is_active = is_active;
+            this.active = active;
         }
 
         @Id
@@ -48,8 +48,8 @@ public Office (Integer id, Integer org_id, String name, String address, String p
         @Column(name = "phone", length = 15, nullable = false)
         private String phone;
 
-        @Column(name= "is_active", nullable = false)
-        private Boolean is_active;
+        @Column(name= "active", nullable = false)
+        private Boolean active;
 
     @OneToMany(mappedBy = "office")
     public Set<User> user;
@@ -58,7 +58,7 @@ public Office (Integer id, Integer org_id, String name, String address, String p
     @JoinColumn(name = "org_id", insertable = false, updatable = false)
     public Organization organization;
 
-        public Integer getId() {
+       /* public Integer getId() {
             return id;
         }
         public Integer getOrgId(){return org_id;}
@@ -71,11 +71,57 @@ public Office (Integer id, Integer org_id, String name, String address, String p
         public String getPhone() {
             return phone;
         }
-        public Boolean getIsActive() {
-            return is_active;
-        }
+        public Boolean isActive() { return active; }*/
 
-        @Override
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getOrg_id() {
+        return org_id;
+    }
+
+    public void setOrg_id(Integer org_id) {
+        this.org_id = org_id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    @Override
         public String toString() {
             return super.toString();
         }

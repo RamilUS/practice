@@ -69,6 +69,13 @@ Organization {
     @OneToMany (mappedBy = "organization")
     public Set<Office> office;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -78,36 +85,12 @@ Organization {
         this.name = name;
     }
 
-    public String getInn() {
-        return inn;
-    }
-
-    public void setInn(String inn) {
-        this.inn = inn;
-    }
-
-    public String getFullname() {
+    public String getFull_name() {
         return full_name;
     }
 
-    public void setFullname(String fullName) {
+    public void setFull_name(String full_name) {
         this.full_name = full_name;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public String getKpp() {
-        return kpp;
-    }
-
-    public void setKpp(String kpp) {
-        this.kpp = kpp;
     }
 
     public String getAddress() {
@@ -126,8 +109,28 @@ Organization {
         this.phone = phone;
     }
 
-    public Boolean getIsactive() {
+    public String getInn() {
+        return inn;
+    }
+
+    public void setInn(String inn) {
+        this.inn = inn;
+    }
+
+    public String getKpp() {
+        return kpp;
+    }
+
+    public void setKpp(String kpp) {
+        this.kpp = kpp;
+    }
+
+    public Boolean getIs_active() {
         return is_active;
+    }
+
+    public void setIs_active(Boolean is_active) {
+        this.is_active = is_active;
     }
 
     public void setIsactive(Boolean is_active) {

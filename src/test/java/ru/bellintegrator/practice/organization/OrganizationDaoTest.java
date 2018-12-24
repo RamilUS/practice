@@ -31,15 +31,14 @@ public class OrganizationDaoTest {
 
     @Test
         public void save() {
-            Organization organization = new Organization("name","full_name","12345678","123456","Ufa Repablic Bashkortostan","+7927123456",true);
-            organizationDao.save(organization);
+            Organization organization1 = new Organization("name","full_name","12345678","123456","Ufa Repablic Bashkortostan","+7927123456",true);
+            organizationDao.save(organization1);
             List<Organization> organizationList = organizationDao.all();
             Assert.assertNotNull(organizationList);
         Assert.assertEquals(3, organizationList.size());
-       /* Organization organization = new Organization();
-        Set<Organization> list = new HashSet<>();
-        list =
-
-        Assert.assertEquals(1, organizations.size());*/
     }
+    public void update(){
+
+    }
+
 }

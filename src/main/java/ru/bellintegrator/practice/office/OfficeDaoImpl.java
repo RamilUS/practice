@@ -62,11 +62,11 @@ public class OfficeDaoImpl implements OfficeDao {
         CriteriaUpdate<Office> cUpdate = builder.createCriteriaUpdate(Office.class);
         Root Offices = cUpdate.from(Office.class);
         cUpdate.where(builder.equal(Offices.get("id"),office.getId()));
-        cUpdate.set("is_active",office.getIsActive());
+        cUpdate.set("active",office.getActive());
         cUpdate.set("phone",office.getPhone());
         cUpdate.set("address",office.getAddress());
         cUpdate.set("name",office.getName());
-        cUpdate.set("org_id",office.getOrgId());
+        cUpdate.set("org_id",office.getOrg_id());
 
 
         Query query = em.createQuery(cUpdate);
