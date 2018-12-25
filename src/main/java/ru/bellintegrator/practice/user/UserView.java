@@ -68,8 +68,8 @@ public Integer id;
 
     @Override
     public String toString(){
-        return "{id: " + id + "; office_id: " + office_id + "; firstName: " + first_name +"; lastName: " + last_name + "; secondName: " + second_name + "; middleName: " + middle_name +
-                "; position: " + position + "; doc_id: " + doc_id +
-                "; citizenship_id: " + citizenship_id + "; is_identified: " + is_identified + "}";
+        return "{"+"\n"+"id: " + id + ";"+"\n"+" office_id: " + office_id + ";"+"\n"+" firstName: " + first_name +";"+"\n"+" lastName: " + last_name + ";"+"\n"+" secondName: " + second_name + ";"+"\n"+" middleName: " + middle_name +
+                ";"+"\n"+" position: " + position + "; "+"\n"+"doc_id: " + doc_id +
+                ";"+"\n"+" citizenship_id: " + citizenship_id + "; "+"\n"+"is_identified: " + is_identified + "\n"+"}";
     }
 }

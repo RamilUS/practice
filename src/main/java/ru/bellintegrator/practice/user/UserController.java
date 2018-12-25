@@ -34,13 +34,13 @@ public class UserController {
 
     @ApiOperation(value = "Получить список всех работников", httpMethod = "GET")
     @GetMapping("/list")
-    public List<UserView> users() { return userService.users();
+    public String users() { return "{data:" +"\n"+userService.users().toString() + "}";
     }
     @ApiOperation(value = "Выбрать работника по ID",httpMethod = "GET")
     @GetMapping("/{id}")
-    public UserView loadById(@PathVariable Integer id ){
+    public String loadById(@PathVariable Integer id ){
         // Integer idI=new Integer(id);
-        return userService.loadById(id);
+        return "{data:" +"\n"+userService.loadById(id).toString() + "}";
     }
 
     @ApiOperation(value = "Обновить информацию об работнике", httpMethod = "POST")

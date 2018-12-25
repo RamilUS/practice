@@ -40,13 +40,13 @@ public class OrganizationController {
             @ApiResponse(code = 200, message = "Success", response = String.class),
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Failure")})
-    public List<OrganizationView> organizations() { return organizationService.organizations();
+    public String organizations() { return "{data:" +"\n"+organizationService.organizations().toString() + "}";
     }
     @ApiOperation(value = "Выбрать организацию по ID",httpMethod = "GET")
     @GetMapping("/{id}")
-    public OrganizationView loadById(@PathVariable Integer id ){
+    public String loadById(@PathVariable Integer id ){
        // Integer idI=new Integer(id);
-        return organizationService.loadById(id);
+        return "{data:" +"\n"+organizationService.loadById(id).toString() + "}";
     }
 
     @ApiOperation(value = "Обновить информацию об организации", httpMethod = "POST")
