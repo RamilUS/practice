@@ -19,8 +19,11 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
 import ru.bellintegrator.practice.Application;
 import ru.bellintegrator.practice.Organization.OrganizationView;
+import ru.bellintegrator.practice.Organization.Wrapper;
+
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 @RunWith(SpringRunner.class)
@@ -40,31 +43,55 @@ public class OrganizationControllerTest {//Add web application context here
 
     @Test
     public void findAll() throws Exception{
-        String organizationAll = "[{\"id\":1,\"name\":\"Biline\",\"full_name\":\"BEELINE LTD\",\"address\":\"ул.Цюрупы, 16\",\"inn\":\"beeline-inn\",\"kpp\":\"beeline-kpp\",\"phone\":\"8(499)123-45-67\",\"is_active\":true},{\"id\":2,\"name\":\"Megafon\",\"full_name\":\"MEGAFON LTD\",\"address\":\"ул.Холмогоры, 16\",\"inn\":\"megafon-inn\",\"kpp\":\"megafon-kpp\",\"phone\":\"8(499)123-99-99\",\"is_active\":true}]";
-        mockMvc.perform(get("/organization/list")).andExpect(status().isOk()).andExpect(content().json(organizationAll));
+        String organizationAll = "{data:\n" +
+                "[{\n" +
+                "id:1;\n" +
+                "name:Biline;\n" +
+                "full_name:BEELINE LTD;\n" +
+                "address:ул.Цюрупы, 16;\n" +
+                "phone:8(499)123-45-67;\n" +
+                "is_actiive:true\n" +
+                "}, {\n" +
+                "id:2;\n" +
+                "name:Megafon;\n" +
+                "full_name:MEGAFON LTD;\n" +
+                "address:ул.Холмогоры, 16;\n" +
+                "phone:8(499)123-99-99;\n" +
+                "is_actiive:true\n" +
+                "}]}";
+        mockMvc.perform(get("/organization/list"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string(organizationAll));
     }
     @Test
        public void findById() throws Exception{
-        String organizationID = "{\"id\":1,\"name\":\"Biline\",\"full_name\":\"BEELINE LTD\",\"address\":\"ул.Цюрупы, 16\",\"inn\":\"beeline-inn\",\"kpp\":\"beeline-kpp\",\"phone\":\"8(499)123-45-67\",\"is_active\":true}";
-        mockMvc.perform(get("/organization/{id}", 1L))
-                .andExpect(status().isOk()).andExpect(content().json(organizationID));
+        String organizationID = "{data:\n" +
+                "{\n" +
+                "id:1;\n" +
+                "name:Biline;\n" +
+                "full_name:BEELINE LTD;\n" +
+                "address:ул.Цюрупы, 16;\n" +
+                "phone:8(499)123-45-67;\n" +
+                "is_actiive:true\n" +
+                "}}";
+        mockMvc.perform(get("api/organization/{id}", 1L))
+                .andExpect(status().isOk()).andExpect(content().string(organizationID));
     }
-   /* @Test
+    @Test
     public void testPostNewOrganizationAndGet() {
         restTemplate = new RestTemplate(new MockMvcClientHttpRequestFactory(mockMvc));
         OrganizationView organizationView = new OrganizationView(null, "название", "полн.название", "1111111111", "000000000",
                 "8 800 000 00 00", "Москва", true);
         HttpEntity<OrganizationView> entity = new HttpEntity<>(organizationView);
-        ResponseEntity<Wrapper<ResponseView>> responseEntity = restTemplate.exchange("/api/organization/save", HttpMethod.POST,
-                entity, new ParameterizedTypeReference<Wrapper<ResponseView>>() {});
-        Wrapper<ResponseView> wrapper = responseEntity.getBody();
-        Assert.assertEquals(new ResponseView("success"), wrapper.getData());
+        ResponseEntity<Wrapper<OrganizationView>> responseEntity = restTemplate.exchange("/organization/save", HttpMethod.POST,
+                entity, new ParameterizedTypeReference<Wrapper<OrganizationView>>() {});
         Assert.assertEquals(200, responseEntity.getStatusCodeValue());
 
-        ResponseEntity<Wrapper<OrganizationView>> responseEntityId3 = restTemplate.exchange("/api/organization/3", HttpMethod.GET,
-                entity, new ParameterizedTypeReference<Wrapper<OrganizationView>>() {});
-        organizationView.setId("3");
-        Assert.assertEquals(organizationView, responseEntityId3.getBody().getData());
-    }*/
+        ResponseEntity<String> responseEntityId3 = restTemplate.exchange("/organization/3", HttpMethod.GET,
+                entity, new ParameterizedTypeReference<String>() {});
+
+        Assert.assertEquals(organizationView.toString(),responseEntityId3);
+    }
 
 }
