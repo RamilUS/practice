@@ -130,6 +130,6 @@ public class OrganizationView {
 
     @Override
     public String toString() {
-        return "{"+"\n"+"id:" + id + ";"+"\n"+"name:" + name+ ";"+"\n"+"full_name:" + full_name + ";"+"\n"+"address:" + address + ";"+"\n"+"phone:" + phone + ";"+"\n"+"is_actiive:" + is_active +"\n"+ "}";
+        return "{"+"\n"+"id:" + id + ";"+"\n"+"name:" + name+ ";"+"\n"+"full_name:" + full_name + ";"+"\n"+"address:" + address + ";"+"\n"+"phone:" + phone + ";"+"\n"+"is_actiive:" + is_active +"}";
     }
 }

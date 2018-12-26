@@ -50,14 +50,14 @@ public class OrganizationControllerTest {//Add web application context here
                 "full_name:BEELINE LTD;\n" +
                 "address:ул.Цюрупы, 16;\n" +
                 "phone:8(499)123-45-67;\n" +
-                "is_actiive:true\n" +
+                "is_actiive:true" +
                 "}, {\n" +
                 "id:2;\n" +
                 "name:Megafon;\n" +
                 "full_name:MEGAFON LTD;\n" +
                 "address:ул.Холмогоры, 16;\n" +
                 "phone:8(499)123-99-99;\n" +
-                "is_actiive:true\n" +
+                "is_actiive:true" +
                 "}]}";
         mockMvc.perform(get("/organization/list"))
                 .andDo(print())
@@ -66,16 +66,8 @@ public class OrganizationControllerTest {//Add web application context here
     }
     @Test
        public void findById() throws Exception{
-        String organizationID = "{data:\n" +
-                "{\n" +
-                "id:1;\n" +
-                "name:Biline;\n" +
-                "full_name:BEELINE LTD;\n" +
-                "address:ул.Цюрупы, 16;\n" +
-                "phone:8(499)123-45-67;\n" +
-                "is_actiive:true\n" +
-                "}}";
-        mockMvc.perform(get("api/organization/{id}", 1L))
+        String organizationID = "{\"id\":1,\"name\":\"Biline\",\"full_name\":\"BEELINE LTD\",\"address\":\"ул.Цюрупы, 16\",\"inn\":\"beeline-inn\",\"kpp\":\"beeline-kpp\",\"phone\":\"8(499)123-45-67\",\"is_active\":true}";
+        mockMvc.perform(get("/organization/{id}", 1L))
                 .andExpect(status().isOk()).andExpect(content().string(organizationID));
     }
     @Test
@@ -90,8 +82,8 @@ public class OrganizationControllerTest {//Add web application context here
 
         ResponseEntity<OrganizationView> responseEntityId3 = restTemplate.exchange("/organization/3", HttpMethod.GET,
                 entity, new ParameterizedTypeReference<OrganizationView>() {});
-
-        Assert.assertEquals(organizationView,responseEntityId3);
+        //organizationView.setId(3);
+        Assert.assertEquals(organizationView,responseEntityId3.getBody());
     }
 
 }
