@@ -21,18 +21,18 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
 import ru.bellintegrator.practice.Application;
-import ru.bellintegrator.practice.Organization.OrganizationView;
 import ru.bellintegrator.practice.Organization.Wrapper;
-
+import ru.bellintegrator.practice.office.OfficeView;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {Application.class})
 @WebAppConfiguration(value = "src/main/resources")
-public class OrganizationControllerTest {//Add web application context here
+public class OfficeControllerTest {
     @Autowired
     private WebApplicationContext webApplicationContext;
     private MockMvc mockMvc;
@@ -53,60 +53,69 @@ public class OrganizationControllerTest {//Add web application context here
 
     @Test
     public void findAll() throws Exception{
-        String organizationAll = "{data:\n" +
+        String officeAll = "{data:\n" +
                 "[{\n" +
                 "id:1;\n" +
-                "name:Biline;\n" +
-                "full_name:BEELINE LTD;\n" +
-                "address:ул.Цюрупы, 16;\n" +
-                "phone:8(499)123-45-67;\n" +
-                "is_actiive:true" +
+                "name:Билайн-отрадное;\n" +
+                "address:ул.отрадная, 7;\n" +
+                "phone:8(499)123-45-01;\n" +
+                "active:true;\n" +
                 "}, {\n" +
                 "id:2;\n" +
-                "name:Megafon;\n" +
-                "full_name:MEGAFON LTD;\n" +
-                "address:ул.Холмогоры, 16;\n" +
-                "phone:8(499)123-99-99;\n" +
-                "is_actiive:true" +
+                "name:Билайн-вднх;\n" +
+                "address:ул.вднх, 7;\n" +
+                "phone:8(499)123-45-02;\n" +
+                "active:true;\n" +
+                "}, {\n" +
+                "id:3;\n" +
+                "name:Мегафон-измайлово;\n" +
+                "address:ул.измайлово, 7;\n" +
+                "phone:8(499)123-99-01;\n" +
+                "active:true;\n" +
+                "}, {\n" +
+                "id:4;\n" +
+                "name:Мегафон-марьино;\n" +
+                "address:ул.марьино, 7;\n" +
+                "phone:8(499)123-99-02;\n" +
+                "active:true;\n" +
                 "}]}";
-        mockMvc.perform(get("/organization/list"))
+        mockMvc.perform(get("/office/list"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string(organizationAll));
+                .andExpect(content().string(officeAll));
     }
     @Test
-       public void findById() throws Exception{
-        String organizationID = "{\"id\":1,\"name\":\"Biline\",\"full_name\":\"BEELINE LTD\",\"address\":\"ул.Цюрупы, 16\",\"inn\":\"beeline-inn\",\"kpp\":\"beeline-kpp\",\"phone\":\"8(499)123-45-67\",\"is_active\":true}";
-        mockMvc.perform(get("/organization/{id}", 1L))
+    public void findById() throws Exception{
+        String organizationID = "{\"id\":1,\"name\":\"Билайн-отрадное\",\"org_id\":1,\"address\":\"ул.отрадная, 7\",\"phone\":\"8(499)123-45-01\",\"active\":true}";
+        mockMvc.perform(get("/office/{id}", 1L))
                 .andExpect(status().isOk()).andExpect(content().string(organizationID));
     }
     @Test
     public void testPostNewOrganizationAndGet() {
         restTemplate = new RestTemplate(new MockMvcClientHttpRequestFactory(mockMvc));
-        OrganizationView organizationView = new OrganizationView(3, "название", "полн.название", "1111111111", "000000000",
-                "8 800 000 00 00", "Москва", true);
-        HttpEntity<OrganizationView> entity = new HttpEntity<>(organizationView);
-        ResponseEntity<Wrapper<OrganizationView>> responseEntity = restTemplate.exchange("/organization/save", HttpMethod.POST,
-                entity, new ParameterizedTypeReference<Wrapper<OrganizationView>>() {});
+        OfficeView officeView = new OfficeView(9, "название", 1, "адресс","569678568", true);
+        HttpEntity<OfficeView> entity = new HttpEntity<>(officeView);
+        ResponseEntity<Wrapper<OfficeView>> responseEntity = restTemplate.exchange("/office/save", HttpMethod.POST,
+                entity, new ParameterizedTypeReference<Wrapper<OfficeView>>() {});
         Assert.assertEquals(200, responseEntity.getStatusCodeValue());
 
-        ResponseEntity<OrganizationView> responseEntityId3 = restTemplate.exchange("/organization/3", HttpMethod.GET,
-                entity, new ParameterizedTypeReference<OrganizationView>() {});
+        ResponseEntity<OfficeView> responseEntityId3 = restTemplate.exchange("/office/9", HttpMethod.GET,
+                entity, new ParameterizedTypeReference<OfficeView>() {});
         //organizationView.setId(3);
-        Assert.assertEquals(organizationView,responseEntityId3.getBody());
+        Assert.assertEquals(officeView,responseEntityId3.getBody());
     }
     @Test
     public void organizationUpdateTest() throws Exception {
-        OrganizationView updt = new OrganizationView();
+        OfficeView updt = new OfficeView();
         updt .id = 2;
-        updt .name = "Spring";
-        updt .full_name = "Spring Boot";
-        updt .address = "SinCity";
-        updt .is_active = true;
-        updt .phone = "9189788877";
-        updt .inn = "233777777";
-        updt .kpp = "555454555";
-        this.mockMvc.perform(MockMvcRequestBuilders.post("/organization/update")
+        updt.name = "Spring";
+        updt.org_id=1;
+        updt .address = "updAddress";
+        updt .phone = "782488877";
+        updt .active = true;
+
+
+        this.mockMvc.perform(MockMvcRequestBuilders.post("/office/update")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(updt )))
                 .andDo(print())

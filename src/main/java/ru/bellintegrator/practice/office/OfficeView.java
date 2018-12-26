@@ -38,8 +38,10 @@ public class OfficeView {
     public OfficeView() {
     }
 
-    public OfficeView(Integer org_id, @NotEmpty @Size(max = 45) String name, @NotEmpty @Size(max = 12) String phone, @NotEmpty Boolean active) {
+    public OfficeView(@NotEmpty Integer id,  @NotEmpty @Size(max = 45) String name,@NotEmpty Integer org_id,@NotEmpty @Size(max = 100) String address, @NotEmpty @Size(max = 12) String phone, @NotEmpty Boolean active) {
+        this.id = id;
         this.org_id = org_id;
+        this.address = address;
         this.name = name;
         this.phone = phone;
         this.active = active;

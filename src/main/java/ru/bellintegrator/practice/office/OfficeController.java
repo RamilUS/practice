@@ -45,7 +45,7 @@ public class OfficeController {
 
     @ApiOperation(value = "Выбрать организацию по ID",httpMethod = "GET")
     @GetMapping("/{id}")
-    public String loadById(@PathVariable Integer id ){
+    public OfficeView loadById(@PathVariable Integer id ){
         //return officeService.loadById(id);
-        return "{data:" +"\n"+ officeService.loadById(id).toString() + "}";}
+        return  officeService.loadById(id);}
 }
