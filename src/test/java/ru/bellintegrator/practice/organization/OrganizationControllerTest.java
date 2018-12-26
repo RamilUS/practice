@@ -81,17 +81,17 @@ public class OrganizationControllerTest {//Add web application context here
     @Test
     public void testPostNewOrganizationAndGet() {
         restTemplate = new RestTemplate(new MockMvcClientHttpRequestFactory(mockMvc));
-        OrganizationView organizationView = new OrganizationView(null, "название", "полн.название", "1111111111", "000000000",
+        OrganizationView organizationView = new OrganizationView(3, "название", "полн.название", "1111111111", "000000000",
                 "8 800 000 00 00", "Москва", true);
         HttpEntity<OrganizationView> entity = new HttpEntity<>(organizationView);
         ResponseEntity<Wrapper<OrganizationView>> responseEntity = restTemplate.exchange("/organization/save", HttpMethod.POST,
                 entity, new ParameterizedTypeReference<Wrapper<OrganizationView>>() {});
         Assert.assertEquals(200, responseEntity.getStatusCodeValue());
 
-        ResponseEntity<String> responseEntityId3 = restTemplate.exchange("/organization/3", HttpMethod.GET,
-                entity, new ParameterizedTypeReference<String>() {});
+        ResponseEntity<OrganizationView> responseEntityId3 = restTemplate.exchange("/organization/3", HttpMethod.GET,
+                entity, new ParameterizedTypeReference<OrganizationView>() {});
 
-        Assert.assertEquals(organizationView.toString(),responseEntityId3);
+        Assert.assertEquals(organizationView,responseEntityId3);
     }
 
 }
